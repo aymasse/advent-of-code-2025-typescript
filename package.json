@@ -1,0 +1,25 @@
+{
+  "name": "advent-of-code-2025-typescript",
+  "version": "1.0.0",
+  "description": "Advent of Code 2025 in TypeScript",
+  "homepage": "https://github.com/aymasse/advent-of-code-2025-typescript#readme",
+  "bugs": {
+    "url": "https://github.com/aymasse/advent-of-code-2025-typescript/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aymasse/advent-of-code-2025-typescript.git"
+  },
+  "license": "ISC",
+  "author": "Aymeric MASSE",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@tsconfig/node-lts": "^24.0.0",
+    "@tsconfig/node-ts": "^23.6.2",
+    "typescript": "^5.9.3"
+  }
+}
