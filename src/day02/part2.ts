@@ -1,4 +1,10 @@
-import { getFirstLine, getStringChunks, sum } from "../utils.ts";
+import {
+  areAllArrayElementsEqual,
+  getFirstLine,
+  getStringChunks,
+  isDivisibleBy,
+  sum,
+} from "../utils.ts";
 import {
   INPUT_FILE_NAME,
   extractIdsRangeDetails,
@@ -33,17 +39,25 @@ function isIdInvalid(id: Id): boolean {
     return false;
   }
 
+  /**
+   * Once again, we only need the get at most the first half of the string
+   * If the string has an odd length, we only need to check up to the rounded down half
+   * For example for length 7 we only need to check up to the string of the first three characters
+   * Substrings that have lengths that cannot divide the id's length can be ignored
+   */
   for (
     let repeatingSequenceLength = 1;
-    repeatingSequenceLength <= Math.ceil(stringId.length / 2);
+    repeatingSequenceLength <= Math.floor(stringId.length / 2);
     repeatingSequenceLength++
   ) {
-    const chunks = getStringChunks(stringId, repeatingSequenceLength);
+    if (isDivisibleBy(stringId.length, repeatingSequenceLength)) {
+      const chunks = getStringChunks(stringId, repeatingSequenceLength);
 
-    const isInvalid = chunks.every((chunk) => chunk === chunks.at(0));
+      const isInvalid = areAllArrayElementsEqual(chunks);
 
-    if (isInvalid) {
-      return true;
+      if (isInvalid) {
+        return true;
+      }
     }
   }
 

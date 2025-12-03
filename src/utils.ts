@@ -33,12 +33,39 @@ export function sum(nums: number[]): number {
 }
 
 export function getStringChunks(input: string, chunkSize: number): string[] {
-  const numChunks = Math.ceil(input.length / chunkSize)
-  const chunks = new Array(numChunks)
+  const numChunks = Math.ceil(input.length / chunkSize);
+  const chunks = new Array(numChunks);
 
   for (let i = 0, o = 0; i < numChunks; ++i, o += chunkSize) {
-    chunks[i] = input.substring(o, o + chunkSize)
+    chunks[i] = input.substring(o, o + chunkSize);
   }
 
-  return chunks
+  return chunks;
+}
+
+export function getStringFirstHalf(str: string): string {
+  if (!isEven(str.length)) {
+    throw new Error("String length is not even. Cannot get half.");
+  }
+
+  return str.substring(0, str.length / 2);
+}
+
+export function getStringSecondHalf(str: string): string {
+  if (!isEven(str.length)) {
+    throw new Error("String length is not even. Cannot get half.");
+  }
+
+  return str.substring(str.length / 2);
+}
+
+export function areAllArrayElementsEqual(arr: unknown[]): boolean {
+  return arr.every((element) => element === arr.at(0));
+}
+
+/**
+ * Check if a is divisible by b, i.e., the remainder of their division is 0
+ */
+export function isDivisibleBy(a: number, b: number): boolean {
+  return a % b === 0;
 }

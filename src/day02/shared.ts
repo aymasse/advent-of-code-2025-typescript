@@ -17,7 +17,10 @@ export function extractIdsRangeDetails(range: IdsRange): IdsRangeDetails {
   };
 }
 
-export function getInvalidIdsFromRange(range: IdsRangeDetails, iteratee: (id: Id) => boolean): InvalidId[] {
+export function getInvalidIdsFromRange(
+  range: IdsRangeDetails,
+  iteratee: (id: Id) => boolean
+): InvalidId[] {
   const invalidIds: InvalidId[] = [];
 
   for (let id = range.start; id <= range.end; id++) {

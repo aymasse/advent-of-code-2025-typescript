@@ -1,4 +1,10 @@
-import { getFirstLine, isEven, sum } from "../utils.ts";
+import {
+  getFirstLine,
+  getStringFirstHalf,
+  getStringSecondHalf,
+  isEven,
+  sum,
+} from "../utils.ts";
 import {
   INPUT_FILE_NAME,
   extractIdsRangeDetails,
@@ -29,9 +35,15 @@ async function main() {
 function isIdInvalid(id: Id): boolean {
   const stringId = id.toString();
 
+  /**
+   * An invalid id has a form like this: XYZXYZ
+   * It MUST be a string with a pattern repeated once
+   * Therefore, only strings with an even length can be invalid ids
+   * We only need to check if the first half of the string is equal to its second half
+   */
   if (isEven(stringId.length)) {
-    const firstHalf = stringId.substring(0, stringId.length / 2);
-    const secondHalf = stringId.substring(stringId.length / 2);
+    const firstHalf = getStringFirstHalf(stringId);
+    const secondHalf = getStringSecondHalf(stringId);
 
     return firstHalf === secondHalf;
   }
