@@ -69,3 +69,14 @@ export function areAllArrayElementsEqual(arr: unknown[]): boolean {
 export function isDivisibleBy(a: number, b: number): boolean {
   return a % b === 0;
 }
+
+/**
+ * Get the max number from a string containing digits
+ */
+export function getMaxFromString(str: string): number {
+  return Math.max(...stringToNumbersArray(str));
+}
+
+export function stringToNumbersArray(str: string): number[] {
+  return getStringChunks(str, 1).map((char) => parseInt(char, 10));
+}
