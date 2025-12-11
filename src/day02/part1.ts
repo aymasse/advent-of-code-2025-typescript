@@ -12,8 +12,8 @@ import {
   extractIdsRangeDetails,
   extractIdsRanges,
   getInvalidIdsFromRange,
+  type Id,
 } from "./shared.ts";
-import type { Id } from "./types.ts";
 
 async function main() {
   console.time(TIME_ID);

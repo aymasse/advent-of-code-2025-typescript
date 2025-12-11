@@ -1,4 +1,6 @@
-import type { DialCommand, DialDirection, DialDistance } from "./types.ts";
+export type DialDirection = "L" | "R";
+export type DialDistance = number;
+export type DialCommand = `${DialDirection}${DialDistance}`;
 
 export const DIAL_SIZE = 100;
 export const DIAL_START_VALUE = 50;

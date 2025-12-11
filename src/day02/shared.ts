@@ -1,4 +1,12 @@
-import type { Id, IdsRange, IdsRangeDetails, InvalidId } from "./types.ts";
+export type IdsRange = `${number}-${number}`;
+export type Id = number;
+export type InvalidId = number;
+
+export interface IdsRangeDetails {
+  start: Id;
+  end: Id;
+}
+
 
 export const INPUT_FILE_NAME = "input.txt";
 export const IDS_RANGES_LIST_SEPARATOR = ",";

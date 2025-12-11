@@ -6,8 +6,8 @@ import {
   extractNumberFromDialCommand,
   INPUT_FILE_NAME,
   TIME_ID,
+  type DialCommand,
 } from "./shared.ts";
-import type { DialCommand } from "./types.ts";
 
 async function main() {
   console.time(TIME_ID);
