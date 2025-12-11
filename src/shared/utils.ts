@@ -1,9 +1,7 @@
-import { resolve } from "node:path";
 import { createReadStream } from "node:fs";
 import { createInterface } from "node:readline";
 
-export function getReadLineInterface(inputFileName: string) {
-  const inputPath = resolve(`${inputFileName}`);
+export function getReadLineInterface(inputPath: string) {
   const fileStream = createReadStream(inputPath);
 
   return createInterface({

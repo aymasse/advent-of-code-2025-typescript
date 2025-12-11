@@ -2,6 +2,7 @@ import type { DialCommand, DialDirection, DialDistance } from "./types.ts";
 
 export const DIAL_SIZE = 100;
 export const DIAL_START_VALUE = 50;
+export const TIME_ID = "main";
 export const INPUT_FILE_NAME = "input.txt";
 
 export function computeNextPosition(

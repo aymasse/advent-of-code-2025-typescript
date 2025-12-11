@@ -1,14 +1,14 @@
+import { resolve } from "node:path";
 import { getReadLineInterface, sum } from "../shared/utils.ts";
-import { getPowerBankMaxVoltage, INPUT_FILE_NAME } from "./shared.ts";
-
-const TIME_ID = "main";
+import { getPowerBankMaxVoltage, INPUT_FILE_NAME, TIME_ID } from "./shared.ts";
 
 async function main() {
   console.time(TIME_ID);
 
   const powerBanksVoltages: number[] = [];
 
-  const readLineInterface = getReadLineInterface(INPUT_FILE_NAME);
+  const inputPath = resolve(import.meta.dirname, INPUT_FILE_NAME);
+  const readLineInterface = getReadLineInterface(inputPath);
 
   for await (const line of readLineInterface) {
     powerBanksVoltages.push(getPowerBankMaxVoltage(line, 12));

@@ -2,6 +2,7 @@ import { getMaxFromString, stringToNumbersArray } from "../shared/utils.ts";
 import type { PowerBank } from "./types.ts";
 
 export const INPUT_FILE_NAME = "./input.txt";
+export const TIME_ID = "main";
 
 export function getPowerBankMaxVoltage(
   powerBank: PowerBank,

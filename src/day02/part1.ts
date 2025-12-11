@@ -1,3 +1,4 @@
+import { resolve } from "node:path";
 import {
   getFirstLine,
   getStringFirstHalf,
@@ -7,18 +8,18 @@ import {
 } from "../shared/utils.ts";
 import {
   INPUT_FILE_NAME,
+  TIME_ID,
   extractIdsRangeDetails,
   extractIdsRanges,
   getInvalidIdsFromRange,
 } from "./shared.ts";
 import type { Id } from "./types.ts";
 
-const TIME_ID = "main";
-
 async function main() {
   console.time(TIME_ID);
 
-  const firstLine = await getFirstLine(INPUT_FILE_NAME);
+  const inputPath = resolve(import.meta.dirname, INPUT_FILE_NAME);
+  const firstLine = await getFirstLine(inputPath);
   const idsRanges = extractIdsRanges(firstLine);
 
   const invalidIds = idsRanges.map(extractIdsRangeDetails).flatMap((range) => {
