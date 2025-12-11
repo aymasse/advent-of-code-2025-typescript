@@ -1,4 +1,4 @@
-import { getReadLineInterface, sum } from "../utils.ts";
+import { getReadLineInterface, sum } from "../shared/utils.ts";
 import { getPowerBankMaxVoltage, INPUT_FILE_NAME } from "./shared.ts";
 
 const TIME_ID = "main";

@@ -1,4 +1,4 @@
-import { getMaxFromString, stringToNumbersArray } from "../utils.ts";
+import { getMaxFromString, stringToNumbersArray } from "../shared/utils.ts";
 import type { PowerBank } from "./types.ts";
 
 export const INPUT_FILE_NAME = "./input.txt";

@@ -1,4 +1,4 @@
-import { getReadLineInterface } from "../utils.ts";
+import { getReadLineInterface } from "../shared/utils.ts";
 import {
   computeNextPosition,
   DIAL_START_VALUE,

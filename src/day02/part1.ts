@@ -4,7 +4,7 @@ import {
   getStringSecondHalf,
   isEven,
   sum,
-} from "../utils.ts";
+} from "../shared/utils.ts";
 import {
   INPUT_FILE_NAME,
   extractIdsRangeDetails,
