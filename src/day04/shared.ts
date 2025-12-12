@@ -110,6 +110,8 @@ export class PaperRollStorage implements Iterable<GridIteration> {
           x: Math.floor(i / that.size),
           y: i % that.size,
         };
+        const done = i >= maxI;
+
         i++;
 
         return {
@@ -117,7 +119,7 @@ export class PaperRollStorage implements Iterable<GridIteration> {
             position,
             value: that.get(position),
           },
-          done: i >= maxI,
+          done,
         };
       },
     };
