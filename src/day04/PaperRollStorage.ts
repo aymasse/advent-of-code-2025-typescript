@@ -8,26 +8,9 @@ export interface GridIteration {
   value: boolean;
 }
 
-export const TIME_ID = "main";
-export const INPUT_FILE_NAME = "input.txt";
-
-export const LIMIT_TO_BE_ACCESSIBLE = 4;
-export const PAPER_ROLL_PRESENCE_CHAR = "@";
-
-export function populateGridRow(
-  row: string,
-  x: number,
-  grid: PaperRollStorage
-) {
-  for (let y = 0; y < row.length; y++) {
-    grid.set({ x, y }, row[y] === PAPER_ROLL_PRESENCE_CHAR);
-  }
-}
-
 /**
  * Describes a square 0-indexed 2D grid to be used in various puzzles
  */
-
 export class PaperRollStorage implements Iterable<GridIteration> {
   private size: number;
   private data: boolean[][];
@@ -70,14 +53,14 @@ export class PaperRollStorage implements Iterable<GridIteration> {
     return neighbors;
   }
 
-  isLocationAccessible(position: Position): boolean {
+  isLocationAccessible(position: Position, accessiblityLimit: number): boolean {
     const neighbors = this.getMooreNeighborhoodOf({
       x: position.x,
       y: position.y,
     });
     const paperRolls = neighbors.filter((location) => location);
 
-    return paperRolls.length < LIMIT_TO_BE_ACCESSIBLE;
+    return paperRolls.length < accessiblityLimit;
   }
 
   removePaperRoll(position: Position) {
@@ -90,10 +73,10 @@ export class PaperRollStorage implements Iterable<GridIteration> {
     }
   }
 
-  getAccessiblePaperRolls(): Position[] {
+  getAccessiblePaperRolls(accessibilityLimit: number): Position[] {
     return Iterator.from(this)
       .filter(({ value }) => value)
-      .filter(({ position }) => this.isLocationAccessible(position))
+      .filter(({ position }) => this.isLocationAccessible(position, accessibilityLimit))
       .map(({ position }) => position)
       .toArray();
   }

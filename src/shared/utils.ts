@@ -78,3 +78,21 @@ export function getMaxFromString(str: string): number {
 export function stringToNumbersArray(str: string): number[] {
   return getStringChunks(str, 1).map((char) => parseInt(char, 10));
 }
+
+export async function printResults(
+  part1: () => Promise<unknown>,
+  part2: () => Promise<unknown>,
+): Promise<void> {
+  await printResult(part1, "PART1");
+  await printResult(part2, "PART2");
+}
+
+async function printResult(
+  part: () => Promise<unknown>,
+  timeId: string,
+): Promise<void> {
+  console.time(timeId);
+  const result = await part();
+  console.log(`${timeId} result:`, result);
+  console.timeEnd(timeId);
+}

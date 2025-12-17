@@ -1,16 +1,13 @@
 import { resolve } from "node:path";
-import { getReadLineInterface, sum } from "../shared/utils.ts";
+import { getReadLineInterface, printResults, sum } from "../shared/utils.ts";
 import { Range } from "./Range.ts";
 
 const INPUT_FILE_NAME = "input.txt";
 const PRODUCTS_RANGE_SEPARATOR = "-";
 
 async function part1() {
-  const TIME_ID = "part1";
   const inputPath = resolve(import.meta.dirname, INPUT_FILE_NAME);
   const readLineInterface = getReadLineInterface(inputPath);
-
-  console.time(TIME_ID);
 
   const freshProductsRanges: Range[] = [];
   const productIds: number[] = [];
@@ -28,16 +25,12 @@ async function part1() {
     freshProductsRanges,
   );
 
-  console.log("Part 1 result", freshProductsIds.length);
-  console.timeEnd(TIME_ID);
+  return freshProductsIds.length;
 }
 
 async function part2() {
-  const TIME_ID = "part2";
   const inputPath = resolve(import.meta.dirname, INPUT_FILE_NAME);
   const readLineInterface = getReadLineInterface(inputPath);
-
-  console.time(TIME_ID);
 
   const freshProductsRanges: Range[] = [];
 
@@ -83,8 +76,7 @@ async function part2() {
     freshProductsRanges.map((range) => range.size),
   );
 
-  console.log("Part 2 result", totalNumberOfFreshProducts);
-  console.timeEnd(TIME_ID);
+  return totalNumberOfFreshProducts;
 }
 
 function isProductsRange(line: string): boolean {
@@ -123,8 +115,7 @@ function getFreshProductsOnly(
 }
 
 async function main() {
-  await part1();
-  await part2();
+  await printResults(part1, part2);
 }
 
 await main();
