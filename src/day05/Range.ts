@@ -14,12 +14,7 @@ export class Range {
   }
 
   isOverlapping(range: Range): boolean {
-    return (
-      this.includes(range.start) ||
-      this.includes(range.end) ||
-      range.includes(this.start) ||
-      range.includes(this.end)
-    );
+    return this.includes(range.start) || this.includes(range.end);
   }
 
   toString() {
@@ -37,15 +32,15 @@ export class Range {
     }
 
     if (this.contains(range)) {
-        return this;
+      return this;
     }
 
     if (range.contains(this)) {
-        return range;
+      return range;
     }
 
     if (this.includes(range.start)) {
-        return new Range(this.start, range.end);
+      return new Range(this.start, range.end);
     }
 
     return new Range(range.start, this.end);
