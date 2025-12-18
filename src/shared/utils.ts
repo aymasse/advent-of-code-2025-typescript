@@ -30,6 +30,12 @@ export function sum(nums: number[]): number {
   }, 0);
 }
 
+export function product(nums: number[]): number {
+  return nums.reduce((previous, current) => {
+    return previous * current;
+  }, 1);
+}
+
 export function getStringChunks(input: string, chunkSize: number): string[] {
   const numChunks = Math.ceil(input.length / chunkSize);
   const chunks = new Array(numChunks);
@@ -77,6 +83,10 @@ export function getMaxFromString(str: string): number {
 
 export function stringToNumbersArray(str: string): number[] {
   return getStringChunks(str, 1).map((char) => parseInt(char, 10));
+}
+
+export function getStringWords(str: string): string[] {
+  return str.split(/\s+/);
 }
 
 export async function printResults(
